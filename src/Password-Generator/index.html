@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-au">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Password Generator</title>
+	<link rel="stylesheet" type="text/css" href="./styles.css" />
+	<script type="text/javascript" src="./Main.js"></script>
+</head>
+
+<body>
+	<main>
+		<section id="password-generator">
+			<h1>Password Generator</h1>
+			<p>I see a lot of password generators. They all do the same basic thing, randomly select characters from an array using <span class="code"><span class="object">Math</span>.random()</span>. This password generator is different to most because it doesn't use <span class="code"><span class="object">Math</span>.random()</span>, this password generator makes use of a cryptographically secure method of generating random numbers.</p>
+			<br>
+			<label for="upper">Include upper case characters (A-Z)?</label>
+			<input id="upper" type="checkbox" checked />
+			<br>
+			<label for="lower">Include lower case characters (a-z)?</label>
+			<input id="lower" type="checkbox" checked />
+			<br>
+			<label for="digit">Include digits (0-9)?</label>
+			<input id="digit" type="checkbox" checked />
+			<br>
+			<label for="symbol">Include symbols ($&@?!#)?</label>
+			<input id="symbol" type="checkbox" />
+			<br>
+			<label for="extra">Extra characters:</label>
+			<input id="extra" type="text" placeholder="+-*/%" />
+			<br>
+			<label for="length">Password length:</label>
+			<input id="length" type="number" min="1" max="16384" value="8" />
+			<br>
+			<button id="generate">Generate</button>
+			<br>
+			<br>
+			<span id="output"></span>
+			<br>
+			<br>
+			<button id="copy">Copy to clipboard</button>
+		</section>
+	</main>
+</body>
+
+</html>
