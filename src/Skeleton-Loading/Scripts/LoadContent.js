@@ -19,7 +19,7 @@ const img = function(src) {
 };
 
 // get the content to be loaded
-fetch("../Data/content.json")
+fetch("./Data/content.json")
 	.then(function(res) {
 		// convert it to json
 		return res.json();
