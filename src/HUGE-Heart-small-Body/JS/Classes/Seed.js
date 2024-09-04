@@ -1,0 +1,3 @@
+// Copyright Matthew James, 2021
+// technically not a class... but it kinda is...
+const Seed=(e,t)=>new GameObject(e,t,new PolygonMesh([new Vector2(0,-5),new Vector2(2,0),new Vector2(0,5),new Vector2(-2,0)]),function(){ctx.beginPath(),ctx.fillStyle="brown",ctx.ellipse(this.x,this.y,2,5,0,0,2*Math.PI),ctx.fill(),ctx.closePath()},function(){this.name="seed",this.layer=2},function(){});

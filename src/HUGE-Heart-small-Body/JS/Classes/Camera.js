@@ -1,0 +1,2 @@
+// Copyright Matthew James, 2021
+class Camera{constructor(t,s,i=function(){},h=function(){}){this.x=t,this.y=s,this.start=i,this.update=h}smoothMove(t,s,i){this.x=lerp(this.x,t,i),this.y=lerp(this.y,s,i)}}

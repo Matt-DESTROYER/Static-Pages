@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Copyright Matthew James, 2021 -->
+
+<head lang="en-au">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#000000">
+	<title>ＨＵＧＥ Heart ˢᵐᵃˡˡ Body</title>
+	<link rel="manifest" href="manifest.webmanifest" />
+	<script type="text/javascript" src="register-sw.js"></script>
+	<style>
+		* {
+			margin: 0px;
+			overflow: hidden;
+		}
+	</style>
+	<!-- ALL the scripts (which I probably just as easily could have merged into a lot less files...) -->
+	<!-- These are classes and tools (note some of the files in classes are not technically classes, but they act pretty much the same so I included them as classes for organisation) -->
+	<script type="text/javascript" src="JS/tools.js"></script>
+	<script type="text/javascript" src="JS/Classes/Scene.js"></script>
+	<script type="text/javascript" src="JS/Classes/GameObject.js"></script>
+	<script type="text/javascript" src="JS/Classes/Camera.js"></script>
+	<script type="text/javascript" src="JS/Classes/PolygonMesh.js"></script>
+	<script type="text/javascript" src="JS/Classes/RectangleMesh.js"></script>
+	<script type="text/javascript" src="JS/Classes/Line.js"></script>
+	<script type="text/javascript" src="JS/Classes/Vector2.js"></script>
+	<script type="text/javascript" src="JS/Classes/DirtMound.js"></script>
+	<script type="text/javascript" src="JS/Classes/Seed.js"></script>
+	<script type="text/javascript" src="JS/Classes/Rubbish.js"></script>
+	<script type="text/javascript" src="JS/update.js"></script>
+	<script type="text/javascript" src="JS/render.js"></script>
+	<!-- This is where the real stuff happens, init sets up some stuff, input sets up input (I know, you never could have guessed), main starts and runs the actual game -->
+	<script type="text/javascript" src="JS/init.js" defer></script>
+	<script type="text/javascript" src="JS/input.js" defer></script>
+	<script type="text/javascript" src="JS/main.js" defer></script>
+</head>
+
+<body></body>
+
+</html>

@@ -1,0 +1,2 @@
+// Copyright Matthew James, 2021
+class RectangleMesh extends PolygonMesh{constructor(e,c,n=!0){super(n?[new Vector2(-e/2,-c/2),new Vector2(e/2,-c/2),new Vector2(e/2,c/2),new Vector2(-e/2,c/2)]:[new Vector2(0,0),new Vector2(e,0),new Vector2(e,c),new Vector2(0,c)])}}

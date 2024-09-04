@@ -1,0 +1,2 @@
+// Copyright Matthew James, 2021
+class Scene{constructor(t,a){this.gameObjects=t,this.camera=a,this.started=!1}start(){this.camera.start(),this.gameObjects.forEach(t=>t.start()),this.started=!0}destroy(e){return this.gameObjects.splice(this.gameObjects.indexOf(e))}update(){this.camera.update(),this.gameObjects.sort((t,e)=>t.layer<e.layer?-1:1),this.gameObjects.forEach(t=>t.enabled&&t.update())}render(){ctx.save(),ctx.translate(canvas.width/2-this.camera.x,canvas.height/2-this.camera.y),this.gameObjects.forEach(t=>t.enabled&&t.render()),ctx.restore()}}
