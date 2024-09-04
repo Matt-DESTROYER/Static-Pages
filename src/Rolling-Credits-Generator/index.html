@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-au">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Rolling Credits Generator</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+	<h1>Rolling Credits Generator</h1>
+	<div id="credits"></div>
+	<br>
+	<input id="input" />
+	<br>
+	<br>
+	<button id="add-title">Add Title</button>
+	<button id="add-credit">Add Credit</button>
+	<br>
+	<br>
+	<label for="seconds">Seconds:</label>
+	<br>
+	<input id="seconds" type="range" min="0" max="120" value="10" /><span id="seconds-display">10 secs</span>
+	<br>
+	<br>
+	<button id="generate">Generate Credits</button>
+	<br>
+	<div id="progress-div" hidden>
+		<progress min="0" max="100" value="100" id="progress"></progress><span id="progress-display"></span>
+	</div>
+</body>
+
+<script type="text/javascript" src="scripts.js"></script>
+
+</html>

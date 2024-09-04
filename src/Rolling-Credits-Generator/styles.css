@@ -1,0 +1,15 @@
+@font-face {
+	font-family: "Apple Chancery";
+    src: url("/Apple Chancery.ttf");
+}
+
+h1 {
+	font-family: Apple Chancery;
+}
+
+#credits {
+	background-color: lightgray;
+	border-radius: 5px;
+	padding: 20px;
+	width: fit-content;
+}
