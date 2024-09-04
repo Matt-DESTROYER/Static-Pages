@@ -1,0 +1,75 @@
+{
+	"title": "Skeleton Loading",
+	"cards": [
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Red.png",
+			"title": "Card #1",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Orange.png",
+			"title": "Card #2",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Yellow.png",
+			"title": "Card #3",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Green.png",
+			"title": "Card #4",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Blue.png",
+			"title": "Card #5",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_DarkBlue.png",
+			"title": "Card #6",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Pink.png",
+			"title": "Card #7",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Purple.png",
+			"title": "Card #8",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Gold.png",
+			"title": "Card #9",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		},
+		{
+			"logo": "https://skeleton-loading.mattdestroyer.repl.co/Data/Logo_Grey.png",
+			"title": "Card #10",
+			"details": "Some very pointless details... These details have no purpose, explain absolutely nothing and are a waste of your precious time.",
+			"cover": "https://skeleton-loading.mattdestroyer.repl.co/Data/Blank_Cover.png",
+			"footer": "This is a short, irrelevant, footer."
+		}
+	]
+}
