@@ -4,72 +4,70 @@ const digit = "0123456789";
 const symbols = "$&@?!#";
 
 // Cryptographically secure random function
-function random(count, min, max) {
-	const numbers = Array.from(window.crypto.getRandomValues(new Uint32Array(count < 10 ? 10 : count))).map((n) => (n / 4294967295) * (max - min) + min);
+crypto.random = function random(count, min, max) {
+	const numbers = Array.from(
+		crypto.getRandomValues(
+			new Uint32Array(count)
+		)
+	)
+		.map((n) =>
+			// normalize
+			(n / (0xffffffff + 1))
+			// make between min and max
+			* (max - min) + min);
 	if (count === 1) {
 		return numbers[0];
-	} else if (count < 10) {
-		return numbers.slice(0, count);
 	}
 	return numbers;
+};
+
+// helper function to copy text to clipboard
+function copyToClipboard(text) {
+	navigator.clipboard
+		.writeText(text)
+		.catch(function(err) {
+			console.warn("Error: Copy to clipboard failed...", err);
+		});
 }
 
-function copyToClipboard(text) {
-	if ("clipboard" in navigator) {
-		navigator.clipboard.writeText(text).catch(function(err) {
-			console.error("Error: Copy to clipboard failed...");
-		});
-	} else {
-		const textarea = document.createElement("textarea");
-		textarea.value = text;
-		document.body.appendChild(textarea);
-		textarea.focus();
-		textarea.select();
-		try {
-			document.execCommand("copy");
-		} catch (err) {
-			console.error("Error: Copy to clipboard failed...");
-		}
-		document.body.removeChild(textarea);
+// helper function to clamp a value between two bounds
+function clamp(value, min, max) {
+	if (value < min) {
+		return min;
+	} else if (value < max) {
+		return max;
 	}
+	return value;
 }
 
 window.addEventListener("load", function() {
-	const [inUpper, inLower, inDigit, inSymbols, inChars, inLength] = Array.from(document.querySelectorAll("input"));
+	const [ inUpper, inLower, inDigit, inSymbols, inChars, inLength ] = Array.from(document.querySelectorAll("input"));
 	const output = document.getElementById("output");
 
-	inLength.addEventListener("change", function() {
-		if (+inLength.value < 1) {
-			inLength.value = "1";
-		} else if (+inLength.value > 16384) {
-			inLength.value = "16384";
-		}
-	});
+	inLength
+		.addEventListener("change", function() {
+			const new_val = clamp(parseInt(inLength.value), 1, 16384);
+			inLength.value = new_val.toString();
+		});
 
-	document.getElementById("generate").addEventListener("click", function() {
-		let possible_chars = "";
-		if (inUpper.checked) {
-			possible_chars += upper;
-		}
-		if (inLower.checked) {
-			possible_chars += lower;
-		}
-		if (inDigit.checked) {
-			possible_chars += digit;
-		}
-		if (inSymbols.checked) {
-			possible_chars += symbols;
-		}
-		possible_chars += inChars.value;
-		const chars = random(inLength.value, 0, possible_chars.length - 1);
-		output.textContent = chars.map((n) => possible_chars[Math.round(n)]).join("");
-	});
+	document.getElementById("generate")
+		.addEventListener("click", function() {
+			let possible_chars = "";
 
-	output.addEventListener("click", function() {
-		copyToClipboard(output.textContent);
-	});
+			if (inUpper.checked) possible_chars += upper;
+			if (inLower.checked) possible_chars += lower;
+			if (inDigit.checked) possible_chars += digit;
+			if (inSymbols.checked) possible_chars += symbols;
 
-	document.getElementById("copy").addEventListener("click", function() {
-		copyToClipboard(output.textContent);
-	});
+			possible_chars += inChars.value;
+
+			const chars = crypto.random(inLength.value, 0, possible_chars.length - 1);
+			output.textContent = chars.map((n) => possible_chars[Math.round(n)]).join("");
+		});
+
+	output
+		.addEventListener("click", () => copyToClipboard(output.textContent));
+
+	document.getElementById("copy")
+		.addEventListener("click", () => copyToClipboard(output.textContent));
 });
