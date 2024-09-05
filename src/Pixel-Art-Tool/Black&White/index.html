@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en-au">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Black & White</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
+	<style>
+		* {
+			margin: 0px;
+		}
+
+		canvas {
+			background-color: rgb(240, 240, 240);
+		}
+	</style>
+</head>
+
+<body>
+	<nav id="UI">
+		<a href="/">Pixel Art Editor</a>
+		<a href="/TransparencyTool">Transparency Tool</a>
+		<a href="/Black&White">Black & White</a>
+		<a href="/Sepia">Sepia</a>
+		<a href="/Invert">Invert</a>
+		<br>
+		<br>
+		<label>Image:</label>
+		<input id="image-input" type="file" accept="image/*" oninput="update();" />
+		<button onclick="download();">Download</button>
+	</nav>
+	<canvas id="image"></canvas>
+	<canvas id="changed-image"></canvas>
+	<script type="text/javascript">
+		const imgCanvas = document.getElementById("image");
+		const imgCtx = imgCanvas.getContext("2d");
+
+		const changedCanvas = document.getElementById("changed-image");
+		const changedCtx = changedCanvas.getContext("2d");
+
+		const imageInput = document.getElementById("image-input");
+
+		function download() {
+			const a = document.createElement("a");
+			a.setAttribute("download", "Black & White Image.png");
+			changedCanvas.toBlob((blob) => {
+				const url = URL.createObjectURL(blob);
+				a.setAttribute("href", url);
+				a.click();
+				URL.revokeObjectURL(url);
+			});
+		}
+
+		function update() {
+			const selectedFile = event.target.files[0];
+			const reader = new FileReader();
+			const img = new Image();
+
+			img.onload = function () {
+				imgCanvas.download = changedCanvas.download = imageInput.value;
+				imgCanvas.width = changedCanvas.width = img.width;
+				imgCanvas.height = changedCanvas.height = img.height;
+				imgCtx.imageSmoothingEnabled = changedCtx.imageSmoothingEnabled = false;
+				imgCtx.drawImage(img, 0, 0);
+				const imageData = imgCtx.getImageData(0, 0, imgCanvas.width, imgCanvas.height);
+				for (let i = 0; i < imageData.data.length; i += 4) {
+					const average = (imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2]) / 3;
+					imageData.data[i] = average;
+					imageData.data[i + 1] = average;
+					imageData.data[i + 2] = average;
+				}
+				changedCtx.putImageData(imageData, 0, 0);
+			};
+
+			reader.onload = function (event) {
+				img.src = event.target.result;
+			};
+
+			reader.readAsDataURL(selectedFile);
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en-au">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Transparency Tool</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
+	<style>
+		* {
+			margin: 0px;
+		}
+
+		canvas {
+			background-color: rgb(240, 240, 240);
+		}
+	</style>
+</head>
+
+<body>
+	<nav id="UI">
+		<a href="/">Pixel Art Editor</a>
+		<a href="/TransparencyTool">Transparency Tool</a>
+		<a href="/Black&White">Black & White</a>
+		<a href="/Sepia">Sepia</a>
+		<a href="/Invert">Invert</a>
+		<br>
+		<br>
+		<label>Image:</label>
+		<input id="image-input" type="file" accept="image/*" oninput="update();" />
+		<label>Colour:</label>
+		<input id="colour" type="color" value="#FFFFFF" oninput="drawChanged();" />
+		<label>Error margin:</label>
+		<input id="error-margin" type="range" min="0" max="100" value="0" oninput="errorMarginLabel.textContent = '(' + this.value + '%)';drawChanged();" />
+		<label id="error-margin-label">(0%)</label>
+		<button onclick="download();">Download</button>
+	</nav>
+	<canvas id="image"></canvas>
+	<canvas id="changed-image"></canvas>
+	<script type="text/javascript">
+		const imgCanvas = document.getElementById("image");
+		const imgCtx = imgCanvas.getContext("2d");
+
+		const changedCanvas = document.getElementById("changed-image");
+		const changedCtx = changedCanvas.getContext("2d");
+
+		const imageInput = document.getElementById("image-input");
+		const colourInput = document.getElementById("colour");
+		const errorMarginInput = document.getElementById("error-margin");
+		const errorMarginLabel = document.getElementById("error-margin-label");
+
+		function download() {
+			const a = document.createElement("a");
+			a.setAttribute("download", "New Image.png");
+			changedCanvas.toBlob((blob) => {
+				const url = URL.createObjectURL(blob);
+				a.setAttribute("href", url);
+				a.click();
+				URL.revokeObjectURL(url);
+			});
+		}
+
+		function hexToRgb(hex) {
+			const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			return result ? [
+				parseInt(result[1], 16),
+				parseInt(result[2], 16),
+				parseInt(result[3], 16)
+			] : "rgb(255, 255, 255)";
+		}
+
+		function drawChanged() {
+			changedCtx.imageSmoothingEnabled = false;
+			changedCtx.mozImageSmoothingEnabled = false;
+			changedCtx.webkitImageSmoothingEnabled = false;
+			changedCtx.msImageSmoothingEnabled = false;
+
+			const imageData = imgCtx.getImageData(0, 0, imgCanvas.width, imgCanvas.height);
+			const _colour = hexToRgb(changedCtx.fillStyle = colourInput.value);
+			for (let i = 0; i < imageData.data.length; i += 4) {
+				if (errorMarginLabel.value === 0) {
+					if (imageData.data[i] === _colour[0] &&
+						imageData.data[i + 1] === _colour[1] &&
+						imageData.data[i + 2] === _colour[2]) {
+						imageData.data[i + 3] = 0;
+					}
+				} else if ((Math.abs(imageData.data[i] - _colour[0]) + Math.abs(imageData.data[i + 1] - _colour[1]) + Math.abs(imageData.data[i + 2] - _colour[2])) / 765 * 100 <= errorMarginInput.value) {
+					imageData.data[i + 3] = 0;
+				}
+			}
+			changedCtx.putImageData(imageData, 0, 0);
+		}
+
+		function update() {
+			const selectedFile = event.target.files[0];
+			const reader = new FileReader();
+			const img = new Image();
+
+			img.onload = function () {
+				imgCanvas.download = changedCanvas.download = imageInput.value;
+				imgCanvas.width = changedCanvas.width = img.width;
+				imgCanvas.height = changedCanvas.height = img.height;
+
+				imgCtx.imageSmoothingEnabled = false;
+				imgCtx.mozImageSmoothingEnabled = false;
+				imgCtx.webkitImageSmoothingEnabled = false;
+				imgCtx.msImageSmoothingEnabled = false;
+
+				imgCtx.drawImage(img, 0, 0);
+
+				drawChanged();
+			};
+
+			reader.onload = function (event) {
+				img.src = event.target.result;
+			};
+
+			reader.readAsDataURL(selectedFile);
+		}
+	</script>
+</body>
+
+</html>

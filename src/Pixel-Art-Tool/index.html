@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en-au">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Pixel Art Editor</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
+	<style>
+		* {
+			margin: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav id="UI">
+		<a href="/">Pixel Art Editor</a>
+		<a href="/TransparencyTool">Transparency Tool</a>
+		<a href="/Black&White">Black & White</a>
+		<a href="/Sepia">Sepia</a>
+		<a href="/Invert">Invert</a>
+		<br>
+		<br>
+		<button style="background-color:red;" id="red">&nbsp;</button>
+		<button style="background-color:orange;" id="orange">&nbsp;</button>
+		<button style="background-color:yellow;" id="yellow">&nbsp;</button>
+		<button style="background-color:lightgreen;" id="lightgreen">&nbsp;</button>
+		<button style="background-color:green;" id="green">&nbsp;</button>
+		<button style="background-color:blue;" id="blue">&nbsp;</button>
+		<button style="background-color:purple;" id="purple">&nbsp;</button>
+		<button style="background-color:pink;" id="pink">&nbsp;</button>
+		<button style="background-color:black;" id="black">&nbsp;</button>
+		<button style="background-color:white;" id="white">&nbsp;</button>
+		&nbsp;
+		<input type="color" id="colour-picker" />
+		<label>Width:</label>
+		<input type="range" min="1" max="100" value="16" id="width" />
+		<label id="width-label">(16)</label>
+		<label>Height:</label>
+		<input type="range" min="1" max="100" value="16" id="height" />
+		<label id="height-label">(16)</label>
+		<label>Scale:</label>
+		<input type="range" min="1" max="10" step="0.5" value="1" id="scale" />
+		<label id="scale-label">(1)</label>
+		<button onclick="image_data.download();">Download</button>
+		<input type="file" onchange="uploadImage();" />
+	</nav>
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript" src="../JS/editor-scripts.js"></script>
+</body>
+
+</html>

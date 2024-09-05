@@ -1,0 +1,23 @@
+#UI {
+	padding: 5px;
+	padding-top: 10px;
+	background-color: gray;
+}
+#UI a {
+	background-color: gray;
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+}
+#UI a:hover {
+	background-color: lightgray;
+}
+#UI button:hover, #UI input:hover {
+	cursor: pointer;
+}
+#UI button {
+	border: solid 1px black;
+}
+canvas {
+	padding: 5px;
+}
