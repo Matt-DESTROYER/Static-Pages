@@ -9,7 +9,7 @@ class Car {
 
 		this.speed = 0;
 		this.acceleration = 0.2;
-		this.maxSpeed = 3;
+		this.maxSpeed = 5;
 		this.friction = 0.05;
 		this.rotation = 0;
 
@@ -43,10 +43,10 @@ class Car {
 			const flip = Math.sign(this.speed);
 
 			if (this.controls.left) {
-				this.rotation += 0.03 * flip;
+				this.rotation += 0.05 * flip;
 			}
 			if (this.controls.right) {
-				this.rotation -= 0.03 * flip;
+				this.rotation -= 0.05 * flip;
 			}
 		}
 
