@@ -14,8 +14,13 @@ class Road {
 		this.bottom = infinity;
 	}
 	getLaneCenter(laneIndex) {
+		if (laneIndex < 0) {
+			laneIndex = 0;
+		} else if (laneIndex >= this.laneCount) {
+			laneIndex = this.laneCount - 1;
+		}
 		const laneWidth = this.width / this.laneCount;
-		return this.left + laneWidth / 2 + Math.min(Math.max(0, laneIndex), this.laneCount - 1) * laneWidth;
+		return this.left + laneWidth / 2 + laneIndex * laneWidth;
 	}
 	render(ctx) {
 		ctx.lineWidth = 5;
