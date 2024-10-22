@@ -8,19 +8,19 @@ class Car {
 		this.height = height;
 
 		this.speed = 0;
-		this.acceleration = 0.2;
-		this.maxSpeed = 5;
+		this.acceleration = 0.3;
+		this.maxSpeed = 8;
 		this.friction = 0.05;
 		this.rotation = 0;
 
 		this.controls = new Controls();
 	}
-	#move() {
+	#move(deltaTime) {
 		if (this.controls.forward) {
-			this.speed += this.acceleration;
+			this.speed += this.acceleration * deltaTime;
 		}
 		if (this.controls.reverse) {
-			this.speed -= this.acceleration;
+			this.speed -= this.acceleration * deltaTime;
 		}
 
 		if (this.speed > this.maxSpeed) {
@@ -30,12 +30,12 @@ class Car {
 		}
 
 		if (this.speed > 0) {
-			this.speed -= this.friction;
+			this.speed -= this.friction * deltaTime;
 		} else if (this.speed < 0) {
-			this.speed += this.friction;
+			this.speed += this.friction * deltaTime;
 		}
 
-		if (Math.abs(this.speed) < this.friction) {
+		if (Math.abs(this.speed) < this.friction * deltaTime) {
 			this.speed = 0;
 		}
 
@@ -43,18 +43,18 @@ class Car {
 			const flip = Math.sign(this.speed);
 
 			if (this.controls.left) {
-				this.rotation += 0.05 * flip;
+				this.rotation += 0.05 * flip * deltaTime;
 			}
 			if (this.controls.right) {
-				this.rotation -= 0.05 * flip;
+				this.rotation -= 0.05 * flip * deltaTime;
 			}
 		}
 
-		this.x -= this.speed * Math.sin(this.rotation);
-		this.y -= this.speed * Math.cos(this.rotation);
+		this.x -= this.speed * Math.sin(this.rotation) * deltaTime;
+		this.y -= this.speed * Math.cos(this.rotation) * deltaTime;
 	}
 	update(deltaTime) {
-		this.#move();
+		this.#move(deltaTime);
 	}
 	render(ctx) {
 		ctx.save();
