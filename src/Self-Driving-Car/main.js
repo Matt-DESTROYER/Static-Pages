@@ -39,7 +39,7 @@ function init() {
 	road = new Road(ctx.canvas.width / 2, 100, 3);
 
 	// initialise car
-	car = new Car(100, 100, 50, 50);
+	car = new Car(100, 100, 100, 50);
 
 	// start main loop
 	main();
