@@ -28,8 +28,7 @@ class Controls {
 					this.reverse = true;
 					break;
 			}
-			console.table(this);
-		});
+		}.bind(this));
 		window.addEventListener("keyup", function(event) {
 			switch (event.code) {
 				case "KeyW":
@@ -49,8 +48,7 @@ class Controls {
 					this.reverse = false;
 					break;
 			}
-			console.table(this);
-		});
+		}.bind(this));
 	}
 }
 
