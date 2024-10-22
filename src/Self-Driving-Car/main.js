@@ -17,10 +17,10 @@ function main(currentFrame) {
 	// clear display
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-	road.draw();
-	
+	road.render(ctx);
+
 	ctx.fillStyle = "black";
-	car.draw();
+	car.render(ctx);
 	ctx.fill();
 
 	window.requestAnimationFrame(main);
