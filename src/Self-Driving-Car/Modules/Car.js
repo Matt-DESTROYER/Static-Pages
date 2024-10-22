@@ -55,11 +55,9 @@ class Car {
 		this.y -= this.speed * Math.cos(this.rotation) * deltaTime;
 	}
 	update(deltaTime) {
-		console.log("deltaTime: ", deltaTime)
 		this.#move(deltaTime);
 	}
 	render(ctx) {
-		console.table(this);
 		ctx.save();
 
 		ctx.translate(this.x, this.y);
