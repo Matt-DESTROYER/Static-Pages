@@ -17,13 +17,14 @@ function main(currentFrame = 0) {
 	// clear display
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-	ctx.fillText("Latency: " + Math.round(deltaTime), 10, 10);
-
 	road.render(ctx);
 
 	ctx.fillStyle = "black";
 	car.render(ctx);
 	ctx.fill();
+
+	// DEBUG
+	ctx.fillText("Latency: " + Math.round(deltaTime), 10, 10);
 
 	previousFrame = currentFrame;
 	window.requestAnimationFrame(main);
