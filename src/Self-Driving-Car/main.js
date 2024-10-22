@@ -36,7 +36,7 @@ function init() {
 	ctx.canvas.height = window.innerHeight;
 
 	// initialise road
-	road = new Road(ctx.canvas.width / 2, 100, 3);
+	road = new Road(ctx.canvas.width / 2, 300, 3);
 
 	// initialise car
 	car = new Car(100, 100, 100, 50);

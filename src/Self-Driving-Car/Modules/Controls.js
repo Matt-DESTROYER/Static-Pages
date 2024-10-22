@@ -28,6 +28,7 @@ class Controls {
 					this.reverse = true;
 					break;
 			}
+			console.table(this);
 		});
 		window.addEventListener("keyup", function(event) {
 			switch (event.code) {
@@ -48,6 +49,7 @@ class Controls {
 					this.reverse = false;
 					break;
 			}
+			console.table(this);
 		});
 	}
 }
