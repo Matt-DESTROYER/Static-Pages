@@ -1,4 +1,4 @@
-import { lerp } from "./utils.js";
+import { lerp } from "../utils.js";
 
 class Road {
 	constructor(x, width, laneCount) {
@@ -12,6 +12,10 @@ class Road {
 		const infinity = 1_000_000;
 		this.top = -infinity;
 		this.bottom = infinity;
+	}
+	getLaneCenter(laneIndex) {
+		const laneWidth = this.width / this.laneCount;
+		return this.left + laneWidth / 2 + laneIndex * laneWidth;
 	}
 	render(ctx) {
 		ctx.lineWidth = 5;
