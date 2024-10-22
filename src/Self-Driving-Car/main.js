@@ -36,10 +36,10 @@ function init() {
 	ctx.canvas.height = window.innerHeight;
 
 	// initialise road
-	road = new Road(ctx.canvas.width / 2, 300, 3);
+	road = new Road(ctx.canvas.width / 2, 400, 4);
 
 	// initialise car
-	car = new Car(road.getLaneCenter(1), 100, 75, 125);
+	car = new Car(Math.floor(road.laneCount / 2), 100, 75, 125);
 
 	// start main loop
 	main();
