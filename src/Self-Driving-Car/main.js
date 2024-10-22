@@ -8,7 +8,7 @@ let car = null;
 let previousFrame = 0;
 
 function main(currentFrame) {
-	const deltaTime = (currentFrame - previousFrame) / 1000;
+	const deltaTime = currentFrame - previousFrame;
 
 	// PHYSICS
 	car.update(deltaTime);
