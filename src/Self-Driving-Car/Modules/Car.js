@@ -56,6 +56,7 @@ class Car {
 	}
 	update(deltaTime) {
 		this.#move(deltaTime);
+		console.table(this);
 	}
 	render(ctx) {
 		ctx.save();
