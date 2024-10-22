@@ -23,6 +23,7 @@ function main(currentFrame) {
 	car.render(ctx);
 	ctx.fill();
 
+	previousFrame = currentFrame;
 	window.requestAnimationFrame(main);
 }
 
