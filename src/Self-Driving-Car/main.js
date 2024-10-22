@@ -24,7 +24,7 @@ function main(currentFrame = 0) {
 	ctx.fill();
 
 	// DEBUG
-	ctx.fillText("Latency: " + Math.round(deltaTime), 10, 10);
+	ctx.fillText("Latency: " + Math.round(deltaTime) + ", FPS: " + Math.round(1000 / deltaTime), 10, 10);
 
 	previousFrame = currentFrame;
 	window.requestAnimationFrame(main);
