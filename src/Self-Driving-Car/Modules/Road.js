@@ -1,8 +1,4 @@
-if (!("lerp" in Math)) {
-	Math.lerp = function (a, b, t) {
-		return a + (b - a) * t;
-	};
-}
+import { lerp } from "./utils.js";
 
 class Road {
 	constructor(x, width, laneCount) {
@@ -22,7 +18,7 @@ class Road {
 		ctx.strokeStyle = "white";
 
 		for (let i = 0; i <= this.laneCount; i++) {
-			const x = Math.lerp(this.left, this.right, i / this.laneCount);
+			const x = lerp(this.left, this.right, i / this.laneCount);
 
 			ctx.beginPath();
 			ctx.moveTo(x, this.top);
