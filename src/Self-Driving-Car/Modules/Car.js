@@ -58,6 +58,7 @@ class Car {
 		this.#move(deltaTime);
 	}
 	render(ctx) {
+		console.table(this);
 		ctx.save();
 
 		ctx.translate(this.x, this.y);
