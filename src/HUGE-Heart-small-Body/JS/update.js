@@ -8,11 +8,11 @@ function Update() {
 			if (timer === false) {
 				timer = true;
 				startTime = Date.now();
-			} else if (currentTime() >= 60000) {
+			} else if (currentTime() >= 90000) {
 				timer = false;
 				endTime = Date.now();
 				if (scenes[0].gameObjects.length === 4) {
-					text = "Good work!\nYou cleaned up all the rubbish in under 60 seconds!\n(Press any key to continue)";
+					text = "Good work!\nYou cleaned up all the rubbish in under 90 seconds!\n(Press any key to continue)";
 					tasks[0] = true;
 				} else if (scenes[0].gameObjects.length <= 14) {
 					scenes[0].started = false;
@@ -25,7 +25,7 @@ function Update() {
 			} else if (scenes[0].gameObjects.length === 4) {
 				timer = false;
 				endTime = Date.now();
-				text = "Good work!\nYou cleaned up all the rubbish in under 60 seconds!\n(Press any key to continue)";
+				text = "Good work!\nYou cleaned up all the rubbish in under 90 seconds!\n(Press any key to continue)";
 				tasks[0] = true;
 				scene = "map";
 			}
